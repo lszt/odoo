@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Odoo 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-15 10:41+0000\n"
-"PO-Revision-Date: 2016-12-02 05:39+0000\n"
+"PO-Revision-Date: 2017-06-15 00:48+0000\n"
 "Last-Translator: Martin Trigaux\n"
 "Language-Team: Mongolian (http://www.transifex.com/odoo/odoo-9/language/mn/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "%s (copy)"
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "<i>Work in a fun atmosphere</i>"
-msgstr ""
+msgstr "<i>Хөгжилтэй уур амьсгалд ажиллах</i>"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -43,14 +43,14 @@ msgstr ""
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "<i>You are passionate</i>"
-msgstr ""
+msgstr "<i>Та гал эрмэлзлэлээр дүүрчээ</i>"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_cto
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "<i>You autonomously and quickly learn</i>"
-msgstr ""
+msgstr "<i>Та бие даан хурдан сурна</i>"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -58,14 +58,14 @@ msgstr ""
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "<i>You easily manage them</i>"
-msgstr ""
+msgstr "<i>Та хялбархан тэднийг удирдана</i>"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.hr_kanban_view_employees
 msgid ""
 "<span class=\"o_unfollow\">Unfollow</span>\n"
 "                                    <span class=\"o_following\">Following</span>"
-msgstr ""
+msgstr "<span class=\"o_unfollow\">Дагахаа болих</span>\n<span class=\"o_following\">Дагах</span>"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
@@ -75,12 +75,12 @@ msgstr "<span>Тайлангууд</span>"
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
 msgid "<span>To Approve</span>"
-msgstr ""
+msgstr "<span>Зөвшөөрөх</span>"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
 msgid "<span>To Do</span>"
-msgstr ""
+msgstr "<span>Хийх ажил</span>"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -95,7 +95,7 @@ msgid ""
 "people. You will start contract with a full technical and functional "
 "training. If you are passionate, motivate and flexible apply for this job, "
 "you will certainly join the best company ever."
-msgstr ""
+msgstr "Өрсөлдөхүйц цалинтай бүтэн цагийн ажил ухаалаг хүмүүсээс бүрэлдэх жижиг баг дунд ажиллана. Та бүрэн хэмжээний техникийн болон функцийн сургалтын гэрээгээр эхлэнэ. Хэрэв та энэ ажилд эрмэлзэлтэй, идэвхтэй, уян хатан өргөдлийг гаргавал илэрхий хамгийн сайн компанитайгаа холбогдоно."
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -106,7 +106,7 @@ msgstr ""
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "A good job in a young and dynamic team"
-msgstr ""
+msgstr "Залуу, хөдөлгөөнтэй багт сайхан ажил"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_message_needaction
@@ -123,7 +123,7 @@ msgstr "Идэвхитэй"
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "Analyse needs, write specification documents and quotation"
-msgstr ""
+msgstr "Шаардлагыг шинжил, дэлгэрэнгүй тодорхойлолтын баримт болон үнийн саналыг бич"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_filter
@@ -142,7 +142,7 @@ msgid ""
 "our team of enthusiastic chief technical officer. So if working on an open "
 "source project in a friendly and cooperative atmosphere sounds like fun to "
 "you, read on..."
-msgstr ""
+msgstr "Тогтмол өсч хөгжиж буй тул бид одоо манай багийг дахин хүчирхэгжүүлэх урам зоригтой CTO-г хайж байна. Иймээс нээлттэй эхийн төсөл дээр найрсаг, хамт олонч орчинд ажиллах нь танд таатай санагдаж байвал үргэлжлүүлэн уншаарай..."
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -154,7 +154,7 @@ msgid ""
 "Because of our constant growth, we're now looking for people to reinforce "
 "our team of enthusiastic developers. So if working on an open source project"
 " in a friendly and cooperative atmosphere sounds like fun to you, read on..."
-msgstr ""
+msgstr "Тогтмол өсч хөгжиж буй тул бид одоо манай багийг дахин хүчирхэгжүүлэх урам зоригтой хөгжүүлэгчдийг хайж байна. Иймээс нээлттэй эхийн төсөл дээр найрсаг, хамт олонч орчинд ажиллах нь танд таатай санагдаж байвал үргэлжлүүлэн уншаарай..."
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_trainee
@@ -162,7 +162,7 @@ msgid ""
 "Because of our constant growth, we're now looking for people to reinforce "
 "our team of enthusiastic trainees. So if working on an open source project "
 "in a friendly and cooperative atmosphere sounds like fun to you, read on..."
-msgstr ""
+msgstr "Тогтмол өсч хөгжиж буй тул бид одоо манай багийг дахин хүчирхэгжүүлэх урам зоригтой сургагч багш нарыг хайж байна. Иймээс нээлттэй эхийн төсөл дээр найрсаг, хамт олонч орчинд ажиллах нь танд таатай санагдаж байвал үргэлжлүүлэн уншаарай..."
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_form
@@ -172,12 +172,12 @@ msgstr "Төрсөн"
 #. module: hr
 #: model:hr.job,name:hr.job_ceo
 msgid "Chief Executive Officer"
-msgstr ""
+msgstr "Гүйцэтгэх Захирал"
 
 #. module: hr
 #: model:hr.job,name:hr.job_cto
 msgid "Chief Technical Officer"
-msgstr ""
+msgstr "Технологи Хариуцсан Захирал"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_child_ids
@@ -187,7 +187,7 @@ msgstr "Хүү хэлтэсүүд"
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_form
 msgid "Citizenship & Other Information"
-msgstr ""
+msgstr "Иргэний харьяалал & Бусад мэдээлэл"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_city
@@ -203,12 +203,12 @@ msgstr ""
 #: model:ir.actions.act_window,help:hr.act_employee_from_department
 #: model:ir.actions.act_window,help:hr.open_view_employee_list_my
 msgid "Click to add a new employee."
-msgstr ""
+msgstr "Шинэ ажилтан нэмэх бол дарна уу."
 
 #. module: hr
 #: model:ir.actions.act_window,help:hr.open_module_tree_department
 msgid "Click to create a department."
-msgstr ""
+msgstr "Хэлтэс үүсгэх бол дарна уу."
 
 #. module: hr
 #: model:ir.actions.act_window,help:hr.view_department_form_installer
@@ -218,7 +218,7 @@ msgstr ""
 #. module: hr
 #: model:ir.actions.act_window,help:hr.action_hr_job
 msgid "Click to define a new job position."
-msgstr ""
+msgstr "Шинэ ажлын байр тодорхойлхоор бол дарна уу."
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -229,7 +229,7 @@ msgstr ""
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Close to the perfection ..."
-msgstr ""
+msgstr "Төгсөрхөд ойрхон ..."
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_coach_id
@@ -271,7 +271,7 @@ msgstr "Тохиргоо"
 #. module: hr
 #: model:hr.job,name:hr.job_consultant
 msgid "Consultant"
-msgstr ""
+msgstr "Зөвлөх"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_form
@@ -283,7 +283,7 @@ msgstr "Холбоо барих мэдээлэл"
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Contributions to open source projects"
-msgstr ""
+msgstr "Нээлттэй эхийн төсөлд хийсэн хувь нэмэр"
 
 #. module: hr
 #: model:ir.actions.act_window,name:hr.view_department_form_installer
@@ -328,7 +328,7 @@ msgstr "Бичлэгт хамгийн сүүлд илгээгдсэн зурва
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Define a clear communication strategy"
-msgstr ""
+msgstr "Тодорхой харилцааны стратегийг тодорхойл"
 
 #. module: hr
 #: model:ir.model.fields,help:hr.field_hr_employee_calendar_id
@@ -338,7 +338,7 @@ msgstr "Нөөцийн хувиарлалтыг тодорхойлох"
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "Deliver generic Odoo functional training sessions"
-msgstr ""
+msgstr "Odoo-н функционалийн ерөнхий сургалтыг хүргэх"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_department_id
@@ -435,7 +435,7 @@ msgstr "Ажилчдын бүтэц"
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_category_list
 msgid "Employees Tags"
-msgstr ""
+msgstr "Ажилтны Пайз"
 
 #. module: hr
 #: code:addons/hr/hr.py:299 constraint:hr.department:0
@@ -463,7 +463,7 @@ msgstr "Шинэ ажилтан авах ажил явагдсан дараах 
 #. module: hr
 #: model:hr.job,name:hr.job_developer
 msgid "Experienced Developer"
-msgstr ""
+msgstr "Туршлагтай Хөгжүүлэгч"
 
 #. module: hr
 #: selection:hr.employee,gender:0
@@ -478,7 +478,7 @@ msgstr "Дагах"
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "Follow and check the development part"
-msgstr ""
+msgstr "Хөгжүүлэлтийн хэсгийг дагаж шалгах"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_message_follower_ids
@@ -510,42 +510,42 @@ msgstr "Хүйс"
 #. module: hr
 #: model:hr.job,website_description:hr.job_developer
 msgid "Good knowledge of HTML and Javascript"
-msgstr ""
+msgstr "HTML болон Javascript-н сайн мэдлэг"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_cto
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Good knowledge of object oriented programming"
-msgstr ""
+msgstr "Обьект Хандалтат програмчлалын сайн мэдлэг"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_cto
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Good knowledge of the latest web technologies"
-msgstr ""
+msgstr "Сүүлийн үеийн веб технологийн сайн мэдлэг"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_cto
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Good knowledge of the programming language"
-msgstr ""
+msgstr "Програмчлалын хэлний сайн мэдлэг"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_cto
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Good knowledge of web design"
-msgstr ""
+msgstr "Веб зохиомжийн сайн мэдлэг"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_cto
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Good language skills in another language"
-msgstr ""
+msgstr "Өөр хэлэнд хэлний сайн ур чадвар"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_filter
@@ -566,22 +566,22 @@ msgstr "HR тохиргоонууд"
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "Help with the configuration of the software"
-msgstr ""
+msgstr "Програм хангамжийн тохиргооны талаар туслах"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_hrm
 msgid "Hire a team of great Human Resources people"
-msgstr ""
+msgstr "Хүний нөөцийн гайхамшигтэй хүмүүсийг ажилд авах"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
 msgid "Hire a team of great executive people"
-msgstr ""
+msgstr "Удирдлагын гайхамшигтай хүмүүсийг ажилд авах"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Hire a team of great marketing people"
-msgstr ""
+msgstr "Маркетингийн гайхамшигтай хүмүүсийг ажилд авах"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_job_no_of_hired_employee
@@ -601,7 +601,7 @@ msgstr "Хүний нөөц"
 #. module: hr
 #: model:hr.job,name:hr.job_hrm
 msgid "Human Resources Manager"
-msgstr ""
+msgstr "Хүний нөөцийн менежер"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_id
@@ -642,7 +642,7 @@ msgstr "Хэрэв энэ идэвхтэй талбар нь худал буюу
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Improve our communication to customers"
-msgstr ""
+msgstr "Захиалагтай хийх харилцааг сайжруулах"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_job_filter
@@ -659,14 +659,14 @@ msgstr "Хүний нөөцийн бүрдүүлэлтэд"
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Increase opportunities"
-msgstr ""
+msgstr "Боломжийг нэмэгдүүлэх"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Increase the visibility of the product"
-msgstr ""
+msgstr "Барааны үзэгдэх хүрээг нэмэгдүүлэх"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_message_is_follower
@@ -717,7 +717,7 @@ msgid ""
 "                You can keep track of the number of employees you have per job\n"
 "                position and follow the evolution according to what you planned\n"
 "                for the future."
-msgstr ""
+msgstr "Ажлын байр нь ажил болон шаардлагыг тодорхойлоход хэрэглэгддэг.\n                Ажлын байр бүр дээрх ажилчдын тоог хөтлөж цаашид хөгжилтэй \n                холбоотой төлөвлөлтийг дагаж болно."
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_job_id
@@ -778,17 +778,17 @@ msgstr "Хүний нөөцийн бүрдүүлэлтийг эхлүүлэх"
 #. module: hr
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Launch new marketing campaigns and offers"
-msgstr ""
+msgstr "Маркетингийн шинэ аян, саналыг гүйцэтгэх"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_hrm
 msgid "Launch new products, Human Resources campaigns and offers"
-msgstr ""
+msgstr "Шинэ бүтээгдэхүүн, Хүний нөөцийн аян, саналыг хэрэгжүүлэх"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
 msgid "Launch new products, marketing campaigns and offers"
-msgstr ""
+msgstr "Шинэ бүтээгдэхүүн, маркетингийн аян, саналыг хэрэгжүүлэх"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_login
@@ -815,7 +815,7 @@ msgstr "Гэрлэлтийн байдал"
 #. module: hr
 #: model:hr.job,name:hr.job_marketing
 msgid "Marketing and Community Manager"
-msgstr ""
+msgstr "Маркетинг болон Коммюнити Менежер"
 
 #. module: hr
 #: selection:hr.employee,marital:0
@@ -827,7 +827,7 @@ msgstr "Гэрлэсэн"
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Master or engineer in computer science"
-msgstr ""
+msgstr "Компьютерийн ухааны магист эсвэл инженеер"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_image_medium
@@ -869,7 +869,7 @@ msgstr "Дэлгэрэнгүй <i class=\"fa fa-caret-down\"/>"
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Must have ..."
-msgstr ""
+msgstr "Байх ёстой ..."
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_complete_name
@@ -881,7 +881,7 @@ msgstr "Нэр"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_country_id
 msgid "Nationality (Country)"
-msgstr ""
+msgstr "Иргэншил (Улс)"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_ceo
@@ -892,7 +892,7 @@ msgstr ""
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Nice to have"
-msgstr ""
+msgstr "Байвал давуутай"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_note
@@ -947,7 +947,7 @@ msgid ""
 "Odoo's department structure is used to manage all documents\n"
 "                related to employees by departments: expenses, timesheets,\n"
 "                leaves and holidays, recruitments, etc."
-msgstr ""
+msgstr "                Odoo-н хэлтсийн бүтэц нь ажилчинд холбоотой бүх баримтыг\n                хэлтсийн бүтцээр удирдахад тусладаг: зардал, цагийн хуудас, амралт чөлөө, \n                ажилтан авах гэх мэт"
 
 #. module: hr
 #: model:ir.actions.client,name:hr.action_client_hr_menu
@@ -973,7 +973,7 @@ msgstr "Бусад Мэдээлэл ..."
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Our staff at work"
-msgstr ""
+msgstr "Манай ажилчид ажил дээрээ"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_parent_id
@@ -983,7 +983,7 @@ msgstr "Толгой хэлтэс"
 #. module: hr
 #: model:hr.job,website_description:hr.job_developer
 msgid "Passion for the Internet and its culture"
-msgstr ""
+msgstr "Интернет болон үүний соёлын талаар чин эрмэлзэлтэй"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_passport_id
@@ -1009,7 +1009,7 @@ msgstr "Фото"
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Pictures of smart and enthusiastic people"
-msgstr ""
+msgstr "Ухаалаг болон урам зоригтой хүмүүсийн зураг"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_form
@@ -1021,7 +1021,7 @@ msgstr "Албан тушаал"
 #: model:hr.job,website_description:hr.job_developer
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Preferably 1 year of experience"
-msgstr ""
+msgstr "1 жилийн туршлагатай бол сайн"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.view_employee_form
@@ -1031,12 +1031,12 @@ msgstr "Бүх мэдээлэл"
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "Quantify and negotiate the resources required"
-msgstr ""
+msgstr "Шаардлагатай нөөцийн тоог гаргаж тохиролцох"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_developer
 msgid "Quick and autonomous learner"
-msgstr ""
+msgstr "Хурдан бие даасан сурагч"
 
 #. module: hr
 #: selection:hr.job,state:0
@@ -1109,13 +1109,13 @@ msgstr "Регистр"
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Scale our events organization all around the world"
-msgstr ""
+msgstr "Дэлхий даяарх манай арга хэмжээний зохион байгуулалтад зохицох"
 
 #. module: hr
 #: model:ir.model.fields,help:hr.field_hr_job_state
 msgid ""
 "Set whether the recruitment process is open or closed for this job position."
-msgstr ""
+msgstr "Энэ ажлын байран сонгон шалгаруулалт явагдаж байгаа эсвэл хаагдсан алин болохыг тохируулах"
 
 #. module: hr
 #: model:ir.ui.view,arch_db:hr.hr_department_view_kanban
@@ -1136,7 +1136,7 @@ msgstr "Ганц бие"
 #: model:hr.job,website_description:hr.job_marketing
 #: model:hr.job,website_description:hr.job_trainee
 msgid "Skills"
-msgstr ""
+msgstr "Ур чадвар"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_image_small
@@ -1191,7 +1191,7 @@ msgstr ""
 #. module: hr
 #: sql_constraint:hr.employee.category:0
 msgid "Tag name already exists !"
-msgstr ""
+msgstr "Пайзын нэр аль хэдийн үүссэн байна"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_category_ids
@@ -1201,12 +1201,12 @@ msgstr "Пайзууд"
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "Take part in the consulting services"
-msgstr ""
+msgstr "Зөвлөх үйлчилгээнд хэсгийг авах"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_developer
 msgid "Team spirit and good communication"
-msgstr ""
+msgstr "Багийн сэтгэл болон сайн харилцаа"
 
 #. module: hr
 #: sql_constraint:hr.job:0
@@ -1237,12 +1237,12 @@ msgstr "Таамаглагдсан нийт ажилтан"
 #. module: hr
 #: model:hr.job,name:hr.job_trainee
 msgid "Trainee"
-msgstr ""
+msgstr "Дадлагажигч"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_marketing
 msgid "Transform our product into a suite of well positioned business Apps"
-msgstr ""
+msgstr "Манай бүтээгдэхүүнийг маш сайн багцлагдсан бизнесийн Апп болгох хувиргах"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_department_message_unread
@@ -1376,7 +1376,7 @@ msgstr "Ажлын и-мэйл"
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_work_location
 msgid "Work Location"
-msgstr ""
+msgstr "Ажлын байршил"
 
 #. module: hr
 #: model:ir.model.fields,field_description:hr.field_hr_employee_mobile_phone
@@ -1440,7 +1440,7 @@ msgstr ""
 #: model:hr.job,website_description:hr.job_hrm
 #: model:hr.job,website_description:hr.job_marketing
 msgid "You are creative"
-msgstr ""
+msgstr "Та бүтээлч эсэх"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
@@ -1493,7 +1493,7 @@ msgstr ""
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant
 msgid "You speak a third language"
-msgstr ""
+msgstr "Та гурав дахь хэлээр ярьдаг эсэх"
 
 #. module: hr
 #: model:hr.job,website_description:hr.job_consultant

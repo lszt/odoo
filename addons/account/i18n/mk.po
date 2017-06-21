@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Aleksandar Vangelovski <aleksandarv@hbee.eu>, 2015-2016
-# Anica Milanova, 2016
+# Anica Milanova, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-22 13:16+0000\n"
-"PO-Revision-Date: 2016-12-22 14:54+0000\n"
+"PO-Revision-Date: 2017-05-30 11:01+0000\n"
 "Last-Translator: Anica Milanova\n"
 "Language-Team: Macedonian (http://www.transifex.com/odoo/odoo-9/language/mk/)\n"
 "MIME-Version: 1.0\n"
@@ -144,7 +144,7 @@ msgstr "&amp;bull;"
 #. module: account
 #: model:ir.ui.view,arch_db:account.account_planner
 msgid ", if accounting or purchase is installed"
-msgstr ", ако \"Сметководство и финансии\" или \"Управување со набавка\" ви е инсталирано"
+msgstr ", доколку е инсталирано Сметководство или Набавки"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_account_form
@@ -1148,7 +1148,7 @@ msgstr "Командна табла на сметководство"
 #: model:ir.model.fields,field_description:account.field_account_invoice_date
 #: model:ir.model.fields,field_description:account.field_account_invoice_refund_date
 msgid "Accounting Date"
-msgstr "Датум на сметководење"
+msgstr "Сметководствен датум"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.view_move_line_form
@@ -3131,7 +3131,7 @@ msgstr "Ден(ови) после датумот на креирањето на 
 #: model:ir.ui.view,arch_db:account.report_generalledger
 #: model:ir.ui.view,arch_db:account.report_trialbalance
 msgid "Debit"
-msgstr "Задолжување"
+msgstr "Должи"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_journal_inbound_payment_method_ids
@@ -3930,7 +3930,7 @@ msgid ""
 "the sign of the balance; e.g.: Expense account. The same applies for "
 "accounts that are typically more credited than debited and that you would "
 "like to print as positive amounts in your reports; e.g.: Income account."
-msgstr "За сметки кои типично имаат повеќе задолжување отколку кредитирање и кои сакате да ги печатите како негативни износи во вашите извештаи, треба да го смените знакот на билансот; на пр.: Сметка Трошоци. Истото се применува за сметки кои типично имаат повеќе побарувања отколку задолжувања и кои сакате да ги испечатите како позитивни износи во вашите извештаи; на пр.: Сметка Приходи."
+msgstr "За конта кои типично имаат повеќе задолжување отколку побарување и кои сакате да ги печатите како негативни износи во вашите извештаи, треба да го смените знакот на билансот; на пр.: Сметка Трошоци. Истото се применува за конта кои типично имаат повеќе побарувања отколку задолжувања и кои сакате да ги испечатите како позитивни износи во вашите извештаи; на пр.: Сметка Приходи."
 
 #. module: account
 #: model:ir.model.fields,help:account.field_account_payment_term_line_value_amount
@@ -4143,7 +4143,7 @@ msgstr "Има фактури"
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_invoice_has_outstanding
 msgid "Has outstanding"
-msgstr "Има извонредни"
+msgstr "Има отворени"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_partner_has_unreconciled_entries
@@ -8181,6 +8181,14 @@ msgid "The sequence of journal %s is deactivated."
 msgstr "Секвенцата од дневникот %s е деактивирана."
 
 #. module: account
+#: code:addons/account/models/company.py:91
+#, python-format
+msgid ""
+"There are still unposted entries in the period you want to lock. You should "
+"either post or delete them."
+msgstr ""
+
+#. module: account
 #: code:addons/account/models/account_bank_statement.py:170
 #, python-format
 msgid ""
@@ -8552,7 +8560,7 @@ msgstr "Вкупно побарување"
 #: model:ir.ui.view,arch_db:account.view_move_form
 #: model:ir.ui.view,arch_db:account.view_move_line_tree
 msgid "Total Debit"
-msgstr "Вкупно задолжување"
+msgstr "Вкупно должи"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_res_partner_total_invoiced
@@ -9590,7 +9598,7 @@ msgstr "други"
 #. module: account
 #: model:ir.ui.view,arch_db:account.invoice_supplier_form
 msgid "outstanding debits"
-msgstr "Вкупно задолжување"
+msgstr "Непокриени задолжувања"
 
 #. module: account
 #: model:ir.ui.view,arch_db:account.invoice_form

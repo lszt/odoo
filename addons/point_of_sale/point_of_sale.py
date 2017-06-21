@@ -726,16 +726,26 @@ class pos_order(osv.osv):
                         closed_session.id,
                         order['name'],
                         order['amount_total'])
-        _logger.warning('attempting to create recovery session for saving order %s', order['name'])
-        new_session_id = session.create(cr, uid, {
-            'config_id': closed_session.config_id.id,
-            'name': _('(RESCUE FOR %(session)s)') % {'session': closed_session.name},
-            'rescue': True, # avoid conflict with live sessions
-        }, context=context)
-        new_session = session.browse(cr, uid, new_session_id, context=context)
 
-        # bypass opening_control (necessary when using cash control)
-        new_session.signal_workflow('open')
+        open_sessions = session.search(cr, uid, [('state', '=', 'opened'),
+                                                 ('rescue', '=', True),
+                                                 ('config_id', '=', closed_session.config_id.id),
+                                                 ('name', 'ilike', closed_session.name) ],
+                                       limit=1, order="start_at DESC", context=context)
+        if open_sessions:
+            new_session_id = open_sessions[0]
+            _logger.warning('using existing recovery session %s for saving order %s', new_session_id, order['name'])
+        else:
+            _logger.warning('attempting to create recovery session for saving order %s', order['name'])
+            new_session_id = session.create(cr, uid, {
+                'config_id': closed_session.config_id.id,
+                'name': _('(RESCUE FOR %(session)s)') % {'session': closed_session.name},
+                'rescue': True, # avoid conflict with live sessions
+            }, context=context)
+            new_session = session.browse(cr, uid, new_session_id, context=context)
+
+            # bypass opening_control (necessary when using cash control)
+            new_session.signal_workflow('open')
 
         return new_session_id
 
@@ -820,6 +830,13 @@ class pos_order(osv.osv):
 
             order_id = self._process_order(cr, uid, order, context=context)
             order_ids.append(order_id)
+
+            # REMOVE ME IN 10.0
+            #At this point, The ORM cache contains all pos.order of the session
+            #As we'll use a non-stored computed field later, empty the cache
+            #ensure not computing this field for the full order list of the session
+            #which is a mess with big pos sessions (4000+ tickets)
+            self.pool['pos.order'].browse(cr, uid, [], context).env.invalidate_all()
 
             try:
                 self.signal_workflow(cr, uid, [order_id], 'paid')
@@ -920,6 +937,10 @@ class pos_order(osv.osv):
             amount_untaxed = currency.round(sum(line.price_subtotal for line in order.lines))
             order.amount_total = order.amount_tax + amount_untaxed
 
+    # DEPRECATED, REMOVE ME IN v10
+    def _amount_all(self, cr, uid, ids, name, args, context=None):
+        res = self.read(cr, uid, ids, name, context=context)
+        return dict((l['id'], l) for l in res)
 
     def _default_session(self, cr, uid, context=None):
         so = self.pool.get('pos.session')
@@ -975,7 +996,7 @@ class pos_order(osv.osv):
     def _force_picking_done(self, cr, uid, picking_id, context=None):
         context = context or {}
         picking_obj = self.pool.get('stock.picking')
-        picking_obj.action_confirm(cr, uid, [picking_id], context=context)
+        picking_obj.action_assign(cr, uid, [picking_id], context=context)
         picking_obj.force_assign(cr, uid, [picking_id], context=context)
         # Mark pack operations as done
         pick = picking_obj.browse(cr, uid, picking_id, context=context)
@@ -1021,10 +1042,10 @@ class pos_order(osv.osv):
                     'location_id': location_id,
                     'location_dest_id': destination_id,
                 }
-                pos_qty = any([x.qty >= 0 for x in order.lines])
+                pos_qty = any([x.qty > 0 for x in order.lines if x.product_id.type in ['product', 'consu']])
                 if pos_qty:
                     order_picking_id = picking_obj.create(cr, uid, picking_vals.copy(), context=context)
-                neg_qty = any([x.qty < 0 for x in order.lines])
+                neg_qty = any([x.qty < 0 for x in order.lines if x.product_id.type in ['product', 'consu']])
                 if neg_qty:
                     return_vals = picking_vals.copy()
                     return_vals.update({
@@ -1062,7 +1083,9 @@ class pos_order(osv.osv):
             # when the pos.config has no picking_type_id set only the moves will be created
             if move_list and not return_picking_id and not order_picking_id:
                 move_obj.action_confirm(cr, uid, move_list, context=context)
-                move_obj.force_assign(cr, uid, move_list, context=context)
+                move_obj.action_assign(cr, uid, move_list, context=context)
+                move_list_to_force = move_obj.browse(cr, uid, move_list, context=context).filtered(lambda m: m.state in ['confirmed', 'waiting']).ids
+                move_obj.force_assign(cr, uid, move_list_to_force, context=context)
                 active_move_list = [x.id for x in move_obj.browse(cr, uid, move_list, context=context) if x.product_id.tracking == 'none']
                 if active_move_list:
                     move_obj.action_done(cr, uid, active_move_list, context=context)
@@ -1295,6 +1318,7 @@ class pos_order(osv.osv):
 
         grouped_data = {}
         have_to_group_by = session and session.config_id.group_by or False
+        rounding_method = session and session.config_id.company_id.tax_calculation_rounding_method
 
         for order in self.browse(cr, uid, ids, context=context):
             if order.account_move:
@@ -1420,6 +1444,14 @@ class pos_order(osv.osv):
                         'partner_id': order.partner_id and self.pool.get("res.partner")._find_accounting_partner(order.partner_id).id or False
                     })
 
+            # round tax lines per order
+            if rounding_method == 'round_globally':
+                for group_key, group_value in grouped_data.iteritems():
+                    if group_key[0] == 'tax':
+                        for line in group_value:
+                            line['credit'] = cur.round(line['credit'])
+                            line['debit'] = cur.round(line['debit'])
+
             # counterpart
             insert_data('counter_part', {
                 'name': _("Trade Receivables"), #order.name,
@@ -1520,6 +1552,31 @@ class pos_order_line(osv.osv):
             res[line.id] = line.order_id.fiscal_position_id.map_tax(line.tax_ids)
         return res
 
+    @api.model
+    def create(self, values):
+        if values.get('order_id') and not values.get('name'):
+            # set name based on the sequence specified on the config
+            config_id = self.env['pos.order'].browse(values['order_id']).session_id.config_id.id
+            # HACK: sequence created in the same transaction as the config
+            # cf TODO master is pos.config create
+            # remove me saas-15
+            self.env.cr.execute("""
+                SELECT s.id
+                FROM ir_sequence s
+                JOIN pos_config c
+                  ON s.create_date=c.create_date
+                WHERE c.id = %s
+                  AND s.code = 'pos.order.line'
+                LIMIT 1
+                """, (config_id,))
+            sequence = self.env.cr.fetchone()
+            if sequence:
+                values['name'] = self.env['ir.sequence'].browse(sequence[0])._next()
+        if not values.get('name'):
+            # fallback on any pos.order sequence
+            values['name'] = self.env['ir.sequence'].next_by_code('pos.order.line')
+        return super(pos_order_line, self).create(values)
+
     _columns = {
         'company_id': fields.many2one('res.company', 'Company', required=True),
         'name': fields.char('Line No', required=True, copy=False),
@@ -1545,7 +1602,8 @@ class pos_order_line(osv.osv):
             fiscal_position_id = line.order_id.fiscal_position_id
             if fiscal_position_id:
                 taxes = fiscal_position_id.map_tax(taxes)
-            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+            price = self.env['account.tax']._fix_tax_included_price(
+                line.price_unit * (1 - (line.discount or 0.0) / 100.0), line.product_id.taxes_id, taxes)
             line.price_subtotal = line.price_subtotal_incl = price * line.qty
             if taxes:
                 taxes = taxes.compute_all(price, currency, line.qty, product=line.product_id, partner=line.order_id.partner_id or False)
@@ -1555,9 +1613,12 @@ class pos_order_line(osv.osv):
             line.price_subtotal = currency.round(line.price_subtotal)
             line.price_subtotal_incl = currency.round(line.price_subtotal_incl)
 
+    # DEPRECATED, REMOVE ME IN v10
+    def _amount_line_all(self, cr, uid, ids, field_names, arg, context=None):
+        res = self.read(cr, uid, ids, field_names, context=context)
+        return dict((l['id'], l) for l in res)
 
     _defaults = {
-        'name': lambda obj, cr, uid, context: obj.pool.get('ir.sequence').next_by_code(cr, uid, 'pos.order.line', context=context),
         'qty': lambda *a: 1,
         'discount': lambda *a: 0.0,
         'company_id': lambda self,cr,uid,c: self.pool.get('res.users').browse(cr, uid, uid, c).company_id.id,
