@@ -1506,6 +1506,22 @@ class pos_order_line(osv.osv):
             line[2]['tax_ids'] = [(6, 0, [x.id for x in product.taxes_id])]
         return line
 
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        if not self.product_id:
+            return
+        if not self.order_id.pricelist_id:
+           raise UserError(
+               _('You have to select a pricelist in the sale form !\n' \
+               'Please set one before choosing a product.'))
+
+        self.tax_ids = self.product_id.taxes_id.filtered(lambda r: not self.company_id or r.company_id == self.company_id)
+        fpos = self.order_id.fiscal_position_id
+        tax_ids_after_fiscal_position = fpos.map_tax(self.tax_ids) if fpos else self.tax_ids
+        price = self.order_id.pricelist_id.price_get(
+            self.product_id.id, self.qty or 1.0, self.order_id.partner_id.id)[self.order_id.pricelist_id.id]
+        self.price_unit = self.env['account.tax']._fix_tax_included_price(price, self.product_id.taxes_id, tax_ids_after_fiscal_position)
+
     def onchange_product_id(self, cr, uid, ids, pricelist, product_id, qty=0, partner_id=False, context=None):
         context = context or {}
         if not product_id:
@@ -1556,7 +1572,7 @@ class pos_order_line(osv.osv):
     def create(self, values):
         if values.get('order_id') and not values.get('name'):
             # set name based on the sequence specified on the config
-            config_id = self.env['pos.order'].browse(values['order_id']).session_id.config_id.id
+            config_id = self.order_id.browse(values['order_id']).session_id.config_id.id
             # HACK: sequence created in the same transaction as the config
             # cf TODO master is pos.config create
             # remove me saas-15
@@ -1597,21 +1613,14 @@ class pos_order_line(osv.osv):
     @api.depends('price_unit', 'tax_ids', 'qty', 'discount', 'product_id')
     def _compute_amount_line_all(self):
         for line in self:
-            currency = line.order_id.pricelist_id.currency_id
-            taxes = line.tax_ids.filtered(lambda tax: tax.company_id.id == line.order_id.company_id.id)
-            fiscal_position_id = line.order_id.fiscal_position_id
-            if fiscal_position_id:
-                taxes = fiscal_position_id.map_tax(taxes)
-            price = self.env['account.tax']._fix_tax_included_price(
-                line.price_unit * (1 - (line.discount or 0.0) / 100.0), line.product_id.taxes_id, taxes)
-            line.price_subtotal = line.price_subtotal_incl = price * line.qty
-            if taxes:
-                taxes = taxes.compute_all(price, currency, line.qty, product=line.product_id, partner=line.order_id.partner_id or False)
-                line.price_subtotal = taxes['total_excluded']
-                line.price_subtotal_incl = taxes['total_included']
-
-            line.price_subtotal = currency.round(line.price_subtotal)
-            line.price_subtotal_incl = currency.round(line.price_subtotal_incl)
+            fpos = line.order_id.fiscal_position_id
+            tax_ids_after_fiscal_position = fpos.map_tax(line.tax_ids) if fpos else line.tax_ids
+            price = line.price_unit * (1 - (line.discount or 0.0) / 100.0)
+            taxes = tax_ids_after_fiscal_position.compute_all(price, line.order_id.pricelist_id.currency_id, line.qty, product=line.product_id, partner=line.order_id.partner_id)
+            line.update({
+                'price_subtotal_incl': taxes['total_included'],
+                'price_subtotal': taxes['total_excluded'],
+            })
 
     # DEPRECATED, REMOVE ME IN v10
     def _amount_line_all(self, cr, uid, ids, field_names, arg, context=None):
@@ -1722,6 +1731,7 @@ class res_partner(osv.osv):
             del partner['id']
             self.write(cr, uid, [partner_id], partner, context=context)
         else:
+            partner['lang'] = self.pool['res.users'].browse(cr, uid, [uid]).lang
             partner_id = self.create(cr, uid, partner, context=context)
         
         return partner_id
