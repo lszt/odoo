@@ -188,7 +188,7 @@ class AccountInvoice(models.Model):
     @api.depends('move_id.line_ids.amount_residual')
     def _compute_payments(self):
         payment_lines = []
-        for line in self.move_id.line_ids:
+        for line in self.move_id.line_ids.filtered(lambda l: l.account_id.id == self.account_id.id):
             payment_lines.extend(filter(None, [rp.credit_move_id.id for rp in line.matched_credit_ids]))
             payment_lines.extend(filter(None, [rp.debit_move_id.id for rp in line.matched_debit_ids]))
         self.payment_move_line_ids = self.env['account.move.line'].browse(list(set(payment_lines)))
@@ -859,24 +859,7 @@ class AccountInvoice(models.Model):
 
     @api.model
     def line_get_convert(self, line, part):
-        return {
-            'date_maturity': line.get('date_maturity', False),
-            'partner_id': part,
-            'name': line['name'],
-            'debit': line['price'] > 0 and line['price'],
-            'credit': line['price'] < 0 and -line['price'],
-            'account_id': line['account_id'],
-            'analytic_line_ids': line.get('analytic_line_ids', []),
-            'amount_currency': line['price'] > 0 and abs(line.get('amount_currency', False)) or -abs(line.get('amount_currency', False)),
-            'currency_id': line.get('currency_id', False),
-            'quantity': line.get('quantity', 1.00),
-            'product_id': line.get('product_id', False),
-            'product_uom_id': line.get('uom_id', False),
-            'analytic_account_id': line.get('account_analytic_id', False),
-            'invoice_id': line.get('invoice_id', False),
-            'tax_ids': line.get('tax_ids', False),
-            'tax_line_id': line.get('tax_line_id', False),
-        }
+        return self.env['product.product']._convert_prepared_anglosaxon_line(line, part)
 
     @api.multi
     def action_cancel(self):
@@ -1186,6 +1169,13 @@ class AccountInvoiceLine(models.Model):
             return accounts['income']
         return accounts['expense']
 
+    def _set_currency(self):
+        company = self.invoice_id.company_id
+        currency = self.invoice_id.currency_id
+        if company and currency:
+            if company.currency_id != currency:
+                self.price_unit = self.price_unit * currency.with_context(dict(self._context or {}, date=self.invoice_id.date_invoice)).rate
+
     def _set_taxes(self):
         """ Used in on_change to set taxes and price."""
         if self.invoice_id.type in ('out_invoice', 'out_refund'):
@@ -1204,8 +1194,10 @@ class AccountInvoiceLine(models.Model):
             prec = self.env['decimal.precision'].precision_get('Product Price')
             if not self.price_unit or float_compare(self.price_unit, self.product_id.standard_price, precision_digits=prec) == 0:
                 self.price_unit = fix_price(self.product_id.standard_price, taxes, fp_taxes)
+                self._set_currency()
         else:
             self.price_unit = fix_price(self.product_id.lst_price, taxes, fp_taxes)
+            self._set_currency()
 
     @api.onchange('product_id')
     def _onchange_product_id(self):
@@ -1254,8 +1246,6 @@ class AccountInvoiceLine(models.Model):
             domain['uom_id'] = [('category_id', '=', product.uom_id.category_id.id)]
 
             if company and currency:
-                if company.currency_id != currency:
-                    self.price_unit = self.price_unit * currency.with_context(dict(self._context or {}, date=self.invoice_id.date_invoice)).rate
 
                 if self.uom_id and self.uom_id.id != product.uom_id.id:
                     self.price_unit = self.env['product.uom']._compute_price(
@@ -1455,3 +1445,27 @@ class MailComposeMessage(models.Model):
             invoice.sent = True
             invoice.message_post(body=_("Invoice sent"))
         return super(MailComposeMessage, self).send_mail(auto_commit=auto_commit)
+
+class ProductProduct(models.Model):
+    _inherit = "product.product"
+
+    @api.model
+    def _convert_prepared_anglosaxon_line(self, line, partner):
+        return {
+            'date_maturity': line.get('date_maturity', False),
+            'partner_id': partner,
+            'name': line['name'],
+            'debit': line['price'] > 0 and line['price'],
+            'credit': line['price'] < 0 and -line['price'],
+            'account_id': line['account_id'],
+            'analytic_line_ids': line.get('analytic_line_ids', []),
+            'amount_currency': line['price'] > 0 and abs(line.get('amount_currency', False)) or -abs(line.get('amount_currency', False)),
+            'currency_id': line.get('currency_id', False),
+            'quantity': line.get('quantity', 1.00),
+            'product_id': line.get('product_id', False),
+            'product_uom_id': line.get('uom_id', False),
+            'analytic_account_id': line.get('account_analytic_id', False),
+            'invoice_id': line.get('invoice_id', False),
+            'tax_ids': line.get('tax_ids', False),
+            'tax_line_id': line.get('tax_line_id', False),
+        }

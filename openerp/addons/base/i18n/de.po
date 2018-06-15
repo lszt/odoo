@@ -3,7 +3,7 @@
 # * base
 # 
 # Translators:
-# BT_astauder <andreas.stauder@brain-tec.ch>, 2015
+# Andreas Stauder <andreas.stauder@brain-tec.ch>, 2015
 # Anja Funk <anja.funk@afimage.de>, 2015
 # Ermin Trevisan <trevi@twanda.com>, 2016-2017
 # Kontor Consulting <p.becker@kontor.consulting>, 2015
@@ -22,8 +22,8 @@ msgstr ""
 "Project-Id-Version: Odoo 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-22 07:25+0000\n"
-"PO-Revision-Date: 2017-09-23 21:31+0000\n"
-"Last-Translator: Ermin Trevisan <trevi@twanda.com>\n"
+"PO-Revision-Date: 2018-04-17 20:09+0000\n"
+"Last-Translator: Martin Trigaux\n"
 "Language-Team: German (http://www.transifex.com/odoo/odoo-9/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2147,7 +2147,7 @@ msgid ""
 "description provided by the CODA configuration tables is based upon the CODA\n"
 "V2.2 specifications.\n"
 "If required, you can manually adjust the descriptions via the CODA configuration menu.\n"
-msgstr ""
+msgstr "\nModul zum Import von CODA-Bankauszügen.\n==========================\n\nSupport sind CODA-Flachdateien im V2-Format von belgischen Bankkonten.\n-----------------------------------------------------------\n * CODA-V1-Unterstützung.\n * CODA-V2.2-Unterstützung.\n *       "
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_bank_statement_import_ofx
@@ -2162,7 +2162,7 @@ msgid ""
 "Bank Statements may be generated containing a subset of the OFX information (only those transaction lines that are required for the\n"
 "creation of the Financial Accounting records).\n"
 "    "
-msgstr ""
+msgstr "\nModul zum Import von OFX-Bankauszügen.\n==========================\n\nDieses Modul ermöglicht Ihnen den Import von maschinell lesbaren OFX-Dateien in Odoo: sie sind in einem vom Menschen lesbaren Format unter\nFinanzen\\Bank- und Bargeldkonten\\Bankauszügen gegliedert und gespeichert.\n\nBankauszüge, die eine Untermenge der OFX-Informationen enthalten, können generiert werden (nur bei Transaktionspositionen, die für die\nErstellung von Finanzbuchhaltungs-Dateien erforderlich sind).\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_account_bank_statement_import_qif
@@ -2178,7 +2178,7 @@ msgid ""
 "---------------------------------------------\n"
 "Because of the QIF format limitation, we cannot ensure the same transactions aren't imported several times or handle multicurrency.\n"
 "Whenever possible, you should use a more appropriate file format like OFX.\n"
-msgstr ""
+msgstr "\nModul zum Import von QIF-Bankauszügen.\n=================================\n\nDieses Modul ermöglicht Ihnen den Import von maschinell lesbaren QIF-Dateien in Odoo: sie sind in einem vom Menschen lesbaren Format unter\nFinanzen\\Bank- und Bargeldkonten\\Bankauszügen gegliedert und gespeichert.\n\nWichtiger Hinweis\n---------------------------------------------\nAufgrund der Beschränkung auf das QIF-Format können wir nicht gewährleisten, dass dieselben Transaktionen nicht mehrmals importiert werden oder mit mehreren Währungen umgehen.\nWo immer es möglich ist, sollten Sie ein geeigneteres Format wie OFX verwenden.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_warning
@@ -3120,7 +3120,7 @@ msgid ""
 "* The Tax Code Chart for Domincan Republic\n"
 "* The main taxes used in Domincan Republic\n"
 "* Fiscal position for local "
-msgstr ""
+msgstr "\nHier ist das Basismodul, das das Buchungsschema für die Dominikanische Republik verwaltet.\n=============================================================\n\n* Chart der Konten.\n* Das Steuergesetzbuch für Dominikan Republik\n* Die wichtigsten Steuern in Dominikaner Republik\n* "
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_ec
@@ -3388,7 +3388,7 @@ msgid ""
 "This module applies to companies based in Vietnamese Accounting Standard (VAS).\n"
 "\n"
 "**Credits:** General Solutions.\n"
-msgstr ""
+msgstr "\nDas ist das Modul zur Verwaltung von Buchungsberichten für Vietnam in Odoo.\n=====================\n\nDieses Modul gilt für Unternehmen mit Sitz in Vietnam (VAS).\n\n**Verschlüsselung:** Allgemeine Lösungen.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_crm_partner_assign
@@ -11899,6 +11899,18 @@ msgstr "Modus"
 #: model:ir.ui.view,arch_db:base.view_server_action_search
 msgid "Model"
 msgstr "Modell"
+
+#. module: base
+#: code:addons/base/ir/ir_model.py:382
+#, python-format
+msgid "Model %s does not exist"
+msgstr ""
+
+#. module: base
+#: code:addons/base/ir/ir_model.py:383
+#, python-format
+msgid "Please specify a valid model for the object relation"
+msgstr ""
 
 #. module: base
 #: code:addons/base/ir/ir_model.py:454

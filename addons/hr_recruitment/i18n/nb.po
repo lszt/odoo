@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Odoo 9.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-22 13:16+0000\n"
-"PO-Revision-Date: 2018-01-15 13:24+0000\n"
-"Last-Translator: Martin Trigaux\n"
+"PO-Revision-Date: 2018-03-16 18:29+0000\n"
+"Last-Translator: Jorunn D. Newth\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/odoo/odoo-9/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -158,7 +158,7 @@ msgstr "<span>Vis</span>"
 msgid ""
 "A Python dictionary that will be evaluated to provide default values when "
 "creating new records for this alias."
-msgstr ""
+msgstr "Python-ordbok som vil brukes til å sette standardverdier når nye oppføringer opprettes for dette aliaset."
 
 #. module: hr_recruitment
 #: model:ir.model.fields,field_description:hr_recruitment.field_hr_applicant_message_needaction
@@ -557,7 +557,7 @@ msgstr "Opprettelses dato."
 #. module: hr_recruitment
 #: model:ir.ui.view,arch_db:hr_recruitment.view_hr_recruitment_report_search
 msgid "Creation Week"
-msgstr ""
+msgstr "Opprettet uke"
 
 #. module: hr_recruitment
 #: model:ir.model.fields,help:hr_recruitment.field_hr_applicant_message_last_post
@@ -846,7 +846,7 @@ msgstr "Ved hvilket universitet vil du få graden din?"
 #. module: hr_recruitment
 #: model:survey.label,value:hr_recruitment.rrow_2_1_2
 msgid "Getting on with colleagues"
-msgstr ""
+msgstr "Komme overens med kolleger"
 
 #. module: hr_recruitment
 #: model:ir.model.fields,help:hr_recruitment.field_hr_recruitment_degree_sequence
